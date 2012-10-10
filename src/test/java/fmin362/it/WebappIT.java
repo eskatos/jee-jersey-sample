@@ -1,5 +1,7 @@
 package fmin362.it;
 
+import com.sun.jersey.api.client.Client;
+import com.sun.jersey.api.client.WebResource;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -49,6 +51,16 @@ public class WebappIT extends TestCase
         } finally {
             inputStream.close();
         }
+    }
+
+    @Test
+    public void testSomeResource() throws Exception
+    {
+        URL url = new URL( this.baseUrl + "/resources/some" );
+        Client client = Client.create();
+        WebResource webResource = client.resource( url.toURI() );
+        String result = webResource.get( String.class );
+        assertEquals( "Hello World!", result.trim() );
     }
 
 }
