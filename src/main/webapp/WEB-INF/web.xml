@@ -14,4 +14,19 @@
         <servlet-name>SomeServletName</servlet-name>
         <url-pattern>/some</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>JerseyServletName</servlet-name>
+        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+        <init-param>
+            <param-name>com.sun.jersey.config.property.packages</param-name>
+            <param-value>fmin362.resources</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>JerseyServletName</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>
