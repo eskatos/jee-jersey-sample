@@ -97,6 +97,13 @@
                         <configuration>
                             <properties>
                                 <cargo.servlet.port>${servlet.port}</cargo.servlet.port>
+                                <cargo.datasource.datasource.derby>
+                                    cargo.datasource.driver=org.apache.derby.jdbc.EmbeddedDriver|
+                                    cargo.datasource.url=jdbc:derby:derbyDB;create=true|
+                                    cargo.datasource.jndi=jdbc/DSfmin362|
+                                    cargo.datasource.username=APP|
+                                    cargo.datasource.password=APP
+                                </cargo.datasource.datasource.derby>
                             </properties>
                         </configuration>
                         <deployables>

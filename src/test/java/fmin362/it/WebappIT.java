@@ -82,4 +82,13 @@ public class WebappIT extends TestCase
         assertEquals( "Hello World!", result.get( 0 ).get( "text" ) );
     }
 
+    @Test
+    public void testJDBCServlet() throws Exception
+    {
+        URL url = new URL( this.baseUrl + "/some-jdbc" );
+        HttpURLConnection connection = ( HttpURLConnection ) url.openConnection();
+        connection.connect();
+        assertEquals( 200, connection.getResponseCode() );
+    }
+
 }
