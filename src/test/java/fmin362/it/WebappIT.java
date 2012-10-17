@@ -91,4 +91,13 @@ public class WebappIT extends TestCase
         assertEquals( 200, connection.getResponseCode() );
     }
 
+    @Test
+    public void testJPAServlet() throws Exception
+    {
+        URL url = new URL( this.baseUrl + "/some-jpa" );
+        HttpURLConnection connection = ( HttpURLConnection ) url.openConnection();
+        connection.connect();
+        assertEquals( 200, connection.getResponseCode() );
+    }
+
 }

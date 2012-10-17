@@ -25,6 +25,15 @@
     </servlet-mapping>
 
     <servlet>
+        <servlet-name>SomeJPAServletName</servlet-name>
+        <servlet-class>fmin362.SomeJPAServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SomeJPAServletName</servlet-name>
+        <url-pattern>/some-jpa</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
         <servlet-name>JerseyServletName</servlet-name>
         <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
         <init-param>
