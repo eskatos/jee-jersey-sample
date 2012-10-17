@@ -9,6 +9,13 @@
     <packaging>war</packaging>
     <name>${project.artifactId}</name>
 
+    <repositories>
+        <repository>
+            <id>jboss</id>
+            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.sun.jersey</groupId>
