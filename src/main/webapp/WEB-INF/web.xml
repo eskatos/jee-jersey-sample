@@ -6,6 +6,11 @@
 
     <display-name>Cargo Archetype Web Application Single Module</display-name>
 
+    <persistence-context-ref>
+        <persistence-context-ref-name>persistence/EntityManager</persistence-context-ref-name>
+        <persistence-unit-name>FMIN362_PU</persistence-unit-name>
+    </persistence-context-ref>
+
     <servlet>
         <servlet-name>SomeServletName</servlet-name>
         <servlet-class>fmin362.SomeServlet</servlet-class>

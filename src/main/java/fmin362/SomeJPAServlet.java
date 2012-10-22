@@ -6,7 +6,8 @@ import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,21 +21,24 @@ public class SomeJPAServlet
     @Resource
     private UserTransaction utx;
 
-    @PersistenceContext
-    private EntityManager em;
+    @PersistenceUnit
+    private EntityManagerFactory emf;
 
     @Override
     protected void doGet( HttpServletRequest req, HttpServletResponse resp )
             throws ServletException, IOException
     {
-        if ( em == null ) {
+        if ( emf == null ) {
             resp.sendError( 500, "JPA Persistence Unit is not properly setup!" );
             return;
         }
 
+        EntityManager em = emf.createEntityManager();
+
         try {
 
             utx.begin();
+            em.joinTransaction();
 
             Message msg = new Message( "Hello World!", new Date() );
             em.persist( msg );
@@ -54,6 +58,10 @@ public class SomeJPAServlet
                 // voir envoyer un email à l'exploitant de l'application.
             }
             throw new ServletException( ex );
+
+        } finally {
+
+            em.close();
 
         }
     }
